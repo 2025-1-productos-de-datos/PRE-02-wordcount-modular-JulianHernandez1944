@@ -1,7 +1,14 @@
 import os  # os interactua con el sistema operativo
 
+from homework.src.wordcount import (
+    main,  # importa la funcion main del archivo wordcount.py
+)
+
 
 def test_migracion():
+
+    main()  # llama a la funcion main del archivo wordcount.py
+
     if not os.path.exists("data/output/results.tsv"):
         raise FileNotFoundError("El archivo results.tsv no existe.")
 
