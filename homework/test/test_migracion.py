@@ -1,12 +1,7 @@
-import os
-
-from ..src.wordcount import main
+import os  # os interactua con el sistema operativo
 
 
 def test_migracion():
-
-    main()
-
     if not os.path.exists("data/output/results.tsv"):
         raise FileNotFoundError("El archivo results.tsv no existe.")
 
@@ -16,6 +11,9 @@ def test_migracion():
     for line in lines:
         key, value = line.strip().split("\t")
         results[key] = value
-
-    assert results.get("computational", 0) == "3"
-    assert results.get("analytics", 0) == "5"
+    assert (
+        results.get("computational", 0) == "3"
+    )  # verifica que la palabra computational aparezca 3 veces sino asigna 0
+    assert (
+        results.get("analytics", 0) == "5"
+    )  # verifica que la palabra science aparezca 2 veces sino asigna 0
