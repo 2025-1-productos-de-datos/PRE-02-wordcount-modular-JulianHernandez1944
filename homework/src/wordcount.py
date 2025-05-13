@@ -1,8 +1,10 @@
 # obtain a list of files in the input directory
 import os
 
+from homework.src._internals.count_words import count_words
 from homework.src._internals.preprocess_lines import preprocess_lines
 from homework.src._internals.read_all_lines import read_all_lines
+from homework.src._internals.split_in_words import split_in_words
 from homework.src._internals.write_count_words import write_count_words
 
 
@@ -19,18 +21,14 @@ def main():
     )  # strip() elimina los espacios en blanco al principio y al final de la línea
 
     # Separar las líneas en palabras mover a split_in_words.py
-    words = []
-    for line in all_lines:
-        words.extend(
-            word.strip(",.!?") for word in line.split()
-        )  # split() divide la línea en palabras y strip() elimina los signos de puntuación
+    words = split_in_words(
+        all_lines
+    )  # split() divide la línea en palabras y strip() elimina los signos de puntuación
 
     # conteo mover a count_words.py
-    counter = {}
-    for word in words:
-        counter[word] = (
-            counter.get(word, 0) + 1
-        )  # get() devuelve el valor de la clave si existe, sino devuelve 0
+    counter = count_words(
+        words
+    )  # get() devuelve el valor de la clave si existe, sino devuelve 0
 
     # count the frequency of the words in the files in the input directory
     # counter = {}
