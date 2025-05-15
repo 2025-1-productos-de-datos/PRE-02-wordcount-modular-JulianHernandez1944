@@ -13,7 +13,7 @@ def test_homework():
         "homework/src/_internals/count_words.py",
         "homework/src/_internals/preprocess_lines.py",
         "homework/src/_internals/read_all_lines.py",
-        "homework/src/_internals/split_in_words.py",
+        "homework/src/_internals/split_into_words.py",
         "homework/src/_internals/write_word_counts.py",
     ]:
         if not os.path.exists(path):
@@ -21,7 +21,7 @@ def test_homework():
 
     try:
         subprocess.run(
-            ["python3", "-m", "homework", "data/input", "data/output"],
+            ["python", "-m", "homework", "data/input", "data/output"],
             check=True,
         )
     except subprocess.CalledProcessError as e:
